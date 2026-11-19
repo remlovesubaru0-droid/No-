@@ -4,8 +4,11 @@
 	"description": "Aliya Official V4 Messenger bot, maintained by Mr.king.",
 	"main": "index.js",
 	"engines": {
-		"node": ">=20",
-		"npm": ">=7.0.0"
+		"node": "20.x",
+		"npm": ">=8.3.0"
+	},
+	"overrides": {
+		"canvas": "$canvas"
 	},
 	"dependencies": {
 		"@distube/ytdl-core": "^4.13.3",
