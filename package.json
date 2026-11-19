@@ -1,6 +1,6 @@
 {
 	"name": "aliya-official-v4",
-	"version": "4.0.2",
+	"version": "4.0.4",
 	"description": "Aliya Official V4 Messenger bot, maintained by Mr.king.",
 	"main": "index.js",
 	"engines": {
