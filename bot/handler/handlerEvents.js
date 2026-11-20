@@ -413,8 +413,10 @@ module.exports = function (api, threadModel, userModel, dashBoardModel, globalMo
 
 				createMessageSyntaxError(commandName);
 				const getText2 = createGetText2(langCode, `${process.cwd()}/languages/cmds/${langCode}.js`, prefix, command);
+
 				await command.onStart({
 					...parameters,
+					message,
 					args,
 					commandName,
 					getLang: getText2,
