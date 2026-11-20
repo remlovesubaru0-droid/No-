@@ -551,6 +551,8 @@ async function startBot() {
 
 	function createCallBackListen(key) {
 		key = randomString(10) + (key || Date.now());
+		for (const oldKey of Object.keys(callbackListenTime))
+			delete callbackListenTime[oldKey];
 		callbackListenTime[key] = callBackListen;
 		return (error, event) => callbackListenTime[key](error, event);
 	}

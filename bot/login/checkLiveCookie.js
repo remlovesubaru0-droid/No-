@@ -30,6 +30,6 @@ module.exports = async function (cookie, userAgent) {
 		return response.data.includes('/privacy/xcs/action/logging/') || response.data.includes('/notifications.php?') || response.data.includes('href="/login/save-password-interstitial');
 	}
 	catch (e) {
-		return false;
+		return null;
 	}
 };
