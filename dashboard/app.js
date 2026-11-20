@@ -11,7 +11,7 @@ const nodemailer = require("nodemailer");
 const cookieParser = require("cookie-parser");
 const flash = require("connect-flash");
 const Passport = require("passport");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const axios = require("axios");
 const mimeDB = require("mime-db");
 const http = require("http");
@@ -104,7 +104,7 @@ module.exports = async (api) => {
         app.use(session({
                 secret: randomStringApikey(10),
                 resave: false,
-                saveUninitialized: true,
+                saveUninitialized: false,
                 cookie: {
                         secure: false,
                         httpOnly: true,
