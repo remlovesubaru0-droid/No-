@@ -120,7 +120,13 @@ function listenMqtt(defaultFuncs, api, ctx, globalCallback) {
       globalCallback({ type: "stop_listen", error: "Connection refused: Server unavailable" }, null);
     }
     utils.warn("Error detected. Will relogin automatically...");
-    api.ws3.relogin();
+    try {
+      if (api && api.ws3 && typeof api.ws3.relogin === "function") {
+        api.ws3.relogin();
+      } else if (api && typeof api.relogin === "function") {
+        api.relogin();
+      }
+    } catch (_) {}
     return;
   });
 
@@ -212,8 +218,10 @@ function parseDelta(defaultFuncs, api, ctx, globalCallback, v) {
   if (v.delta.class == "NewMessage") {
     //Not tested for pages
     if (ctx.globalOptions.pageID && ctx.globalOptions.pageID != v.queue) return;
-    (function resolveAttachmentUrl(i) {
-      if (v.delta.attachments && (i == v.delta.attachments.length)) {
+    var attachments = Array.isArray(v.delta.attachments) ? v.delta.attachments : [];
+    var resolveIndex = 0;
+    (function resolveAttachmentUrl() {
+      if (resolveIndex >= attachments.length) {
         var fmtMsg;
         try {
           fmtMsg = utils.formatDeltaMessage(v);
@@ -230,14 +238,22 @@ function parseDelta(defaultFuncs, api, ctx, globalCallback, v) {
 
         return !ctx.globalOptions.selfListen && fmtMsg.senderID === ctx.userID ? undefined : (function() { globalCallback(null, fmtMsg); })();
       } else {
-        if (v.delta.attachments && (v.delta.attachments[i].mercury.attach_type == "photo")) {
-          api.resolvePhotoUrl(v.delta.attachments[i].fbid, (err, url) => {
-            if (!err) v.delta.attachments[i].mercury.metadata.url = url;
-            return resolveAttachmentUrl(i + 1);
+        var attachment = attachments[resolveIndex];
+        if (attachment && attachment.mercury && attachment.mercury.attach_type == "photo") {
+          api.resolvePhotoUrl(attachment.fbid, (err, url) => {
+            if (!err) {
+              if (!attachment.mercury.metadata || typeof attachment.mercury.metadata !== "object") attachment.mercury.metadata = {};
+              attachment.mercury.metadata.url = url;
+            }
+            resolveIndex++;
+            return resolveAttachmentUrl();
           });
-        } else return resolveAttachmentUrl(i + 1);
+        } else {
+          resolveIndex++;
+          return resolveAttachmentUrl();
+        }
       }
-    })(0);
+    })();
   }
 
   if (v.delta.class == "ClientPayload") {
