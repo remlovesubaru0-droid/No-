@@ -1,14 +1,11 @@
 {
 	"name": "aliya-official-v4",
-	"version": "4.0.4",
+	"version": "4.0.5",
 	"description": "Aliya Official V4 Messenger bot, maintained by Mr.king.",
 	"main": "index.js",
 	"engines": {
-		"node": "20.x",
-		"npm": ">=8.3.0"
-	},
-	"overrides": {
-		"canvas": "$canvas"
+		"node": ">=20",
+		"npm": ">=7.0.0"
 	},
 	"dependencies": {
 		"@distube/ytdl-core": "^4.13.3",
@@ -57,7 +54,6 @@
 		"sequelize": "^6.19.0",
 		"sharp": "^0.35.4",
 		"socket.io": "^4.5.1",
-		"sqlite3": "^5.1.7",
 		"sshpk": "^1.18.0",
 		"tinyurl": "^1.1.7",
 		"totp-generator": "^0.0.13",
@@ -68,7 +64,8 @@
 		"start": "node index.js",
 		"dev": "node index.js",
 		"prod": "node index.js",
-		"zip": "node zip-project.js"
+		"zip": "node zip-project.js",
+		"pm2": "pm2 start ecosystem.config.js"
 	},
 	"author": "Mr.king",
 	"license": "MIT",
@@ -98,5 +95,8 @@
 		"prettier": "^2.7.1",
 		"prompt-checkbox": "^2.2.0",
 		"terser": "^5.15.0"
+	},
+	"optionalDependencies": {
+		"sqlite3": "^5.1.7"
 	}
 }

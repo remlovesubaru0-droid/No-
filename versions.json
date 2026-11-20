@@ -66,20 +66,22 @@
     ]
   },
   {
-  "version": "4.0.3",
-  "files": {
-    "index.js": "Launcher stability: heartbeat freeze detection, RAM-aware heap, crash backoff, restart-loop guard",
-    "Aliya.js": "Stability layer: memory guard, startup timeouts, fatal-error handling, autoRestart overflow fix",
-    "package.json": "Sync dependencies with lockfile, remove built-in module shims",
-    "package-lock.json": "Regenerated root metadata to match package.json",
-    "scripts/cmds/boxlist.js": "Fix syntax error and leave-group handling",
-    "scripts/cmds/fork.js": "Fix syntax error in message template",
-    "scripts/cmds/yt.js": "Fix reply handler, add timeouts and size limit",
-    "scripts/cmds/sing.js": "Add timeouts, size limit and cleanup",
-    "scripts/cmds/lyrics.js": "Add timeouts and error diagnostics",
-    "scripts/cmds/amv.js": "added downloader"
-  },
-  "contributors": ["Mr.king"]
+    "version": "4.0.3",
+    "files": {
+      "index.js": "Launcher stability: heartbeat freeze detection, RAM-aware heap, crash backoff, restart-loop guard",
+      "Aliya.js": "Stability layer: memory guard, startup timeouts, fatal-error handling, autoRestart overflow fix",
+      "package.json": "Sync dependencies with lockfile, remove built-in module shims",
+      "package-lock.json": "Regenerated root metadata to match package.json",
+      "scripts/cmds/boxlist.js": "Fix syntax error and leave-group handling",
+      "scripts/cmds/fork.js": "Fix syntax error in message template",
+      "scripts/cmds/yt.js": "Fix reply handler, add timeouts and size limit",
+      "scripts/cmds/sing.js": "Add timeouts, size limit and cleanup",
+      "scripts/cmds/lyrics.js": "Add timeouts and error diagnostics",
+      "scripts/cmds/amv.js": "added downloader"
+    },
+    "contributors": [
+      "Mr.king"
+    ]
   },
   {
     "version": "4.0.4",
@@ -100,6 +102,49 @@
       "TERMUX_INSTALL.md": "Document the canvas alias and Termux verification commands",
       "UPGRADE_NOTES.md": "Document the typing controls, canvas packaging and daily task upgrade"
     },
-    "contributors": ["Mr.king"]
+    "contributors": [
+      "Mr.king"
+    ]
+  },
+  {
+    "version": "4.0.5",
+    "files": {
+      "Aliya.js": "Install the shared avatar scraper and seed account files from environment variables",
+      "Wolf.js": "Install the avatar scraper and attach mapped avatars to safe-mode replies",
+      "index.js": "Include avatar helpers and the incoming logger in startup checks, and materialize config from the template on cloud hosts",
+      "bot/handler/handlerEvents.js": "Wrap replies for commands with a fixed avatar",
+      "scripts/cmds/daily.js": "Daily 5000 money and 300 exp reward with an image-only daily task card",
+      "scripts/cmds/pair2.js": "Use the shared avatar scraper instead of a hardcoded Graph picture URL",
+      "scripts/cmds/pair3.js": "Use the shared avatar scraper instead of a hardcoded Graph picture URL",
+      "scripts/cmds/pair4.js": "Use the shared avatar scraper instead of a hardcoded Graph picture URL",
+      "scripts/cmds/pair5.js": "Use the shared avatar scraper instead of a hardcoded Graph picture URL",
+      "scripts/cmds/pair6.js": "Use the shared avatar scraper instead of a hardcoded Graph picture URL",
+      "scripts/cmds/pair7.js": "Use the shared avatar scraper instead of a hardcoded Graph picture URL",
+      "scripts/cmds/pair8.js": "Use the shared avatar scraper instead of a hardcoded Graph picture URL",
+      "scripts/cmds/pair9.js": "Use the shared avatar scraper instead of a hardcoded Graph picture URL",
+      "scripts/cmds/poop.js": "Use the shared avatar scraper for avatars",
+      "scripts/cmds/confession.js": "Use the shared avatar scraper for avatars",
+      "scripts/cmds/fakechat.js": "Use the shared avatar scraper for avatars",
+      "scripts/cmds/uid.js": "Use the shared avatar scraper for avatars",
+      "scripts/cmds/handsome.js": "Use the shared avatar scraper for avatars",
+      "scripts/cmds/fighter.js": "Use the shared avatar scraper for avatars",
+      "scripts/cmds/patkhet.js": "Use the shared avatar scraper for avatars",
+      "scripts/cmds/takla.js": "Use the shared avatar scraper for avatars",
+      "scripts/cmds/toilet.js": "Use the shared avatar scraper for avatars",
+      "scripts/cmds/top.js": "Use the shared avatar scraper for avatars",
+      "scripts/cmds/kicked.js": "Use the shared avatar scraper for avatars",
+      "scripts/cmds/pfp.js": "Use the shared avatar scraper for avatars",
+      "scripts/cmds/spy.js": "Use the shared avatar scraper for avatars",
+      "config.json": "Added the typing indicator section",
+      "package.json": "Version 4.0.5, canvas alias, sqlite3 as optional dependency and pm2 script",
+      "package-lock.json": "Synced lockfile with package.json at version 4.0.5",
+      "UPGRADE_NOTES.md": "Documented avatar mapping, daily task card and deployment fixes",
+      "versions.json": "Removed the experimental avatar scraper and restored original command avatar handling",
+      "scripts/cmds/pair.js": "Use the shared avatar scraper instead of a hardcoded Graph picture URL",
+      "updater.js": "Fixed a syntax error in the update success log call"
+    },
+    "contributors": [
+      "Mr.king"
+    ]
   }
 ]

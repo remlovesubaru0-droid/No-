@@ -51,13 +51,20 @@ setInterval(() => send({ type: "HEARTBEAT" }), 15000).unref();
 const RSS_LIMIT_MB = Number(process.env.ALIYA_RSS_LIMIT_MB) || 0;
 if (RSS_LIMIT_MB > 0) {
 	let over = 0;
-	setInterval(() => {
+	let cleaning = false;
+	const autoFreshCleanup = (() => {
+		try { return require("./bot/login/autoFresh.js"); }
+		catch (e) { return null; }
+	})();
+	setInterval(async () => {
 		const mb = process.memoryUsage().rss / 1048576;
 		if (mb > RSS_LIMIT_MB) {
 			over++;
 			console.warn(`[ALIYA_MEMORY] RSS ${Math.round(mb)}MB is above ${RSS_LIMIT_MB}MB (${over}/2)`);
-			if (over >= 2) {
-				console.warn("[ALIYA_MEMORY] Restarting to free memory...");
+			if (over >= 2 && !cleaning) {
+				cleaning = true;
+				console.warn("[ALIYA_MEMORY] Memory limit reached. Cleaning temporary data and restarting fresh...");
+				try { if (typeof autoFreshCleanup === "function") await autoFreshCleanup(); } catch (e) {}
 				process.exit(2);
 			}
 		}

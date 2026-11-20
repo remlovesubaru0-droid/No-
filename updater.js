@@ -266,7 +266,7 @@ fs.copyFileSync = function (src, dest) {
 		const { data: rawPackageJSON } = await axios.get(`https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/${BRANCH}/package.json`);
 		fs.writeFileSync(`${process.cwd()}/package.json`, typeof rawPackageJSON === "string" ? rawPackageJSON : JSON.stringify(rawPackageJSON, null, 2));
 
-		log.info("UPDATE", getText("updater", "updateSuccess", !reinstallDependencies ? getText("updater", "restartToApply"] : ""));
+		log.info("UPDATE", getText("updater", "updateSuccess", !reinstallDependencies ? getText("updater", "restartToApply") : ""));
 
 		if (reinstallDependencies) {
 			log.info("UPDATE", getText("updater", "installingPackages"));
